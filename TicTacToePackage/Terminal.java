@@ -95,7 +95,7 @@ public class Terminal
 
         for(int row = 1; row < gameBoard.length; row++)
         {
-            for(int col = row; col < gameBoard.length; col++)
+            for(int col = row; col <= row; col++)
             {
                 if(gameBoard[row][col].getValue().equals(gameBoard[row-1][col-1].getValue()))
                 {
