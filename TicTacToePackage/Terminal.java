@@ -110,7 +110,7 @@ public class Terminal
 
         for(int row = 2; row >= 1; row--)
         {
-            for(int col = gameBoard.length - row - 1; col < gameBoard.length; col++)
+            for(int col = gameBoard.length - row - 1; col <= row; col++)
             {
                 if(gameBoard[row][col].getValue().equals(gameBoard[row-1][col+1].getValue()))
                 {
