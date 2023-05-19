@@ -1,17 +1,16 @@
 import PingPongPackage.*;
-import java.awt.Color;
+import TicTacToePackage.*;
 import javax.swing.*;
 
 public class Main extends JFrame
 {
-    private static final int FRAME_WIDTH = 600;
-    private static final int FRAME_HEIGHT = 300;
+    private static final int FRAME_WIDTH = 500;
+    private static final int FRAME_HEIGHT = 400;
 
     public Main()
     {
         this.setTitle("Game Selection");
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.setVisible(true);
@@ -20,14 +19,24 @@ public class Main extends JFrame
         this.setLayout(null);
 
         JPanel pingPongPanel = new JPanel();
-        pingPongPanel.setBounds((FRAME_WIDTH-400)/2 - 10, 10, 400, 40);
-        pingPongPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+        pingPongPanel.setBounds(40, 20, 400, 60);
+        //pingPongPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         createPingPong(pingPongPanel);
 
+        JPanel ticTacToePanel = new JPanel();
+        ticTacToePanel.setBounds(40, 80, 400, 60);
+        createTicTacToe(ticTacToePanel);
+
+
         this.add(pingPongPanel);
+        this.add(ticTacToePanel);
+
         this.setVisible(true);
     }
 
+    /*
+     * Adds Elements to Ping Pong Panel
+     */
     private void createPingPong(JPanel p)
     {
         ButtonGroup b1 = new ButtonGroup();
@@ -51,6 +60,9 @@ public class Main extends JFrame
         p.add(play);
     }
 
+    /*
+     * Ping Pong Game Instructions
+     */
     private void pingPongClick(JPanel p, JRadioButton rb1, JRadioButton rb2, JRadioButton rb3) 
     {
         if(rb1.isSelected() == false && rb2.isSelected() == false && rb3.isSelected() == false)
@@ -69,6 +81,39 @@ public class Main extends JFrame
         }
     }
 
+    /*
+     * Adds Tic Tac Toe Elements to Tic Tac Toe Panel
+     */
+    private void createTicTacToe(JPanel p)
+    {
+        ButtonGroup b1 = new ButtonGroup();
+
+        JLabel ticTacToeLabel = new JLabel("Tic Tac Toe Game: ");
+        JRadioButton rb1 = new JRadioButton("Terminal");
+
+        b1.add(rb1);
+
+        JButton play = new JButton("Play");
+        play.addActionListener(e -> ticTacToeClick(p, rb1));
+
+        p.add(ticTacToeLabel);
+        p.add(rb1);
+        p.add(play);
+
+    }
+
+    private void ticTacToeClick(JPanel p, JRadioButton r1)
+    {
+        if(r1.isSelected() == false)
+        {
+            JOptionPane.showMessageDialog(p, "You Must Select a Option", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(p, "Follow Terminal Instructions", "Rules", JOptionPane.INFORMATION_MESSAGE);
+            new Terminal().run();
+        }
+    }
     public static void main(String[] args) 
     {
         new Main();

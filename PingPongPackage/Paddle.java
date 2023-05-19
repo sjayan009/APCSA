@@ -53,24 +53,24 @@ public class Paddle extends Rectangle
         switch(id)
         {
             case 1:
-                if(e.getKeyCode() == KeyEvent.VK_W)
+                if(e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_A)
                 {
                     setYDirection(0);
                     move();
                 }
-                if(e.getKeyCode() == KeyEvent.VK_S)
+                if(e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_D)
                 {
                     setYDirection(0);
                     move();
                 }
                 break;
             case 2:
-                if(e.getKeyCode() == KeyEvent.VK_UP)
+                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_LEFT)
                 {
                     setYDirection(0);
                     move();
                 }
-                if(e.getKeyCode() == KeyEvent.VK_DOWN)
+                if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_RIGHT)
                 {
                     setYDirection(0);
                     move();

@@ -1,0 +1,40 @@
+From GridWindow2.java
+5/19/2023
+
+public void get(int num)
+    {
+        Component comp = gridPanel.getComponent(num);
+        if (comp instanceof JPanel) {
+            JPanel squarePanel = (JPanel) comp;
+            if (squarePanel.getComponentCount() > 0 && squarePanel.getComponent(0) instanceof TestNature) {
+                TestNature n = (TestNature) squarePanel.getComponent(0);
+                squarePanel.setBackground(n.getColor());
+                System.out.println(n.getID());
+            } else {
+                System.out.println("Component at index " + num + " does not contain a Nature object");
+            }
+        } else {
+            System.out.println("Component at index " + num + " is not a JPanel object");
+        }
+    }
+
+From GridWindow2.java
+5/19/2023
+    
+    public void testComponent()
+    {
+        for(int i = 0; i < 18; i++)
+        {
+            Nature n = (Nature)((JPanel)(gridPanel.getComponent(i * 18 + i))).getComponent(0);
+            System.out.println(n.getDescription());
+        }
+
+        int num = 306;
+        while(num > 0)
+        {
+            Nature n = (Nature)((JPanel)(gridPanel.getComponent(num))).getComponent(0);
+            System.out.println(n.getDescription());
+            num -= 17;
+        }
+    }
+
